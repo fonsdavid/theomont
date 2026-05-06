@@ -1,0 +1,66 @@
+name: Optimize Assets
+
+on:
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - '**/*.webp'
+
+jobs:
+  optimize:
+    if: github.actor != 'github-actions'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick webp
+          npm install -g html-minifier-terser csso-cli terser
+
+      - name: Convert images to webp safely
+        run: |
+          find . -type f \( -iname "*.jpg" -o -iname "*.png" \) | while read file; do
+            output="${file%.*}.webp"
+
+            convert "$file" -auto-orient -resize 400x400\> -quality 85 "$output"
+
+            if [ -f "$output" ]; then
+              rm "$file"
+            else
+              echo "Conversion failed for $file"
+            fi
+          done
+
+      - name: Replace image references
+        run: |
+          find . -type f \( -iname "*.html" -o -iname "*.css" -o -iname "*.js" \) \
+          -exec sed -i 's/\.jpg/\.webp/g; s/\.png/\.webp/g' {} +
+
+      - name: Minify HTML
+        run: |
+          find . -name "*.html" -exec html-minifier-terser \
+            --collapse-whitespace \
+            --remove-comments \
+            --minify-css true \
+            --minify-js true \
+            -o {} {} \;
+
+      - name: Minify CSS
+        run: |
+          find . -name "*.css" -exec csso {} --output {} \;
+
+      - name: Minify JS
+        run: |
+          find . -name "*.js" -exec terser {} -o {} -c -m \;
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Auto optimize assets" || echo "No changes"
+          git push
