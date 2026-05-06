@@ -21,17 +21,38 @@ jobs:
       - name: Install tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y imagemagick webp
+          sudo apt-get install -y webp imagemagick
           npm install -g html-minifier-terser csso-cli terser
 
-      - name: Convert images to webp safely
+      - name: Convert images to webp (cwebp, max 400px)
         run: |
           find . -type f \( -iname "*.jpg" -o -iname "*.png" \) | while read file; do
             output="${file%.*}.webp"
 
-            convert "$file" -auto-orient -resize 400x400\> -quality 100 "$output"
+            # get dimensions
+            width=$(identify -format "%w" "$file")
+            height=$(identify -format "%h" "$file")
+
+            max=400
+
+            if [ "$width" -le "$max" ] && [ "$height" -le "$max" ]; then
+              # no resize needed
+              cwebp -q 88 -m 6 -af "$file" -o "$output"
+            else
+              # calculate scale while preserving aspect ratio
+              if [ "$width" -gt "$height" ]; then
+                new_width=$max
+                new_height=$(( height * max / width ))
+              else
+                new_height=$max
+                new_width=$(( width * max / height ))
+              fi
+
+              cwebp -q 88 -m 6 -af -resize $new_width $new_height "$file" -o "$output"
+            fi
 
             if [ -f "$output" ]; then
+              echo "Converted $file → $output"
               rm "$file"
             else
               echo "Conversion failed for $file"
