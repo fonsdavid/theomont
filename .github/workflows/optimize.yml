@@ -29,7 +29,7 @@ jobs:
           find . -type f \( -iname "*.jpg" -o -iname "*.png" \) | while read file; do
             output="${file%.*}.webp"
 
-            convert "$file" -auto-orient -resize 400x400\> -quality 85 "$output"
+            convert "$file" -auto-orient -resize 400x400\> -quality 100 "$output"
 
             if [ -f "$output" ]; then
               rm "$file"
