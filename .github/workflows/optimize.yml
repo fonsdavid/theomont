@@ -24,7 +24,7 @@ jobs:
           sudo apt-get install -y webp imagemagick
           npm install -g html-minifier-terser csso-cli terser
 
-      - name: Convert images to webp (cwebp, max 400px)
+      - name: Convert images to webp (cwebp, max 500px)
         run: |
           find . -type f \( -iname "*.jpg" -o -iname "*.png" \) | while read file; do
             output="${file%.*}.webp"
@@ -33,11 +33,11 @@ jobs:
             width=$(identify -format "%w" "$file")
             height=$(identify -format "%h" "$file")
 
-            max=400
+            max=500
 
             if [ "$width" -le "$max" ] && [ "$height" -le "$max" ]; then
               # no resize needed
-              cwebp -q 88 -m 6 -af "$file" -o "$output"
+              cwebp -q 95 -m 6 -af "$file" -o "$output"
             else
               # calculate scale while preserving aspect ratio
               if [ "$width" -gt "$height" ]; then
@@ -48,7 +48,7 @@ jobs:
                 new_width=$(( width * max / height ))
               fi
 
-              cwebp -q 88 -m 6 -af -resize $new_width $new_height "$file" -o "$output"
+              cwebp -q 95 -m 6 -af -resize $new_width $new_height "$file" -o "$output"
             fi
 
             if [ -f "$output" ]; then
