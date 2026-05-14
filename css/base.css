@@ -1,0 +1,123 @@
+:root {
+	--bg: #b88b7d;
+	--theme1: #344050;
+	--theme2: #344050;
+	--highlight: #FEFAE0;
+	--color1: color-mix(in srgb, var(--theme1) 80%, var(--theme2) 20%);
+	--color2: color-mix(in srgb, var(--theme1) 60%, var(--theme2) 40%);
+	--color3: color-mix(in srgb, var(--theme1) 40%, var(--theme2) 60%);
+	--color4: color-mix(in srgb, var(--theme1) 20%, var(--theme2) 80%);
+	--large: 3.5vh;
+	--small: 2.5vh;
+	--text: #fbdbdb;
+}
+::-webkit-scrollbar {
+		width: 0;
+	}
+@font-face {
+	font-family: mont;
+	src: url(montserrat.ttf);
+}
+body {
+	background: var(--bg);
+	color: var(--text);
+	font-family: mont;
+	font-weight: 500;
+	margin: 0;
+	overflow-x: hidden;
+}
+p, ul, ol {
+	font-size: var(--small);
+	margin: 3vh 0;
+}
+a {
+	text-decoration: none;
+}
+input {
+	display: none;
+}
+iframe {
+	position: fixed;
+	z-index: -100;
+	opacity: 0;
+}
+.active, strong {
+	font-weight: 600;
+}
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+
+
+@media (pointer: coarse) {
+	.deskBtn {
+		display: none;
+	}
+	.phoneLang {
+		position: absolute;
+		bottom: 3vh;
+		left: 3vh;
+		font-size: var(--small)
+	}
+	.phoneLang span {
+		padding-right: 1vh;
+		transition: .4s;
+	}
+}
+
+@media (pointer: fine) and (hover: hover) {
+	.phoneLang {
+		display: none;
+	}
+	.deskBtn > div {
+		width: 3.5vh;
+		height: 3.5vh;
+		position: fixed;
+		bottom: 3vh;
+	}
+	.deskBtn a, lang-icon {
+		opacity: .5;
+		transition: .4s;
+	}
+	.deskBtn a:hover, lang-icon:hover, #land label:hover, #lang div span:hover {
+		opacity: .8;
+	}
+	#lang {
+		right: 9vh;
+		z-index: 3;
+	}
+	#lang div {
+		position: fixed;
+		bottom: 3vh;
+		font-size: 0;
+		right: 15vh;
+		opacity: 0;
+		color: var(--highlight);
+		transition: .4s;
+	}
+	#lang:hover {
+		width: 25%;
+	}
+	#lang:hover div {
+		opacity: 1;
+		font-size: var(--small);
+	}
+	#lang div span {
+		padding-left: 2vh;
+		opacity: .5;
+		cursor: pointer;
+		transition: .4s;
+	}
+	lang-icon {
+		width: 3.5vh;
+		cursor: pointer;
+		display: inline-block;
+		float: right;
+	}
+}

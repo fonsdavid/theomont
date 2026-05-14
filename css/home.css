@@ -1,0 +1,411 @@
+#land {
+	color: var(--highlight);
+	background: var(--bg);
+	display: flex;
+	top:-100vh;
+	width: 100vw;
+	height: 100dvh;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	overflow: hidden;
+	transition: .4s;
+	z-index: 1;
+}
+#landBg {
+	opacity: .1;
+	display: grid;
+	position: absolute;
+}
+#landBg img {
+	border-radius: 4vh;
+	border: solid var(--bg) 2vh;
+	width: 100%;
+	box-sizing: border-box;
+	grid-row-start: span 2;
+	grid-column-start: span 2;
+}
+#landBg div {
+	grid-column-start: span 2;
+}
+#landCont {
+	text-align: center;
+	font-size: 7vh;
+	padding: 0 2vh;
+	z-index: 2;
+	animation: land-in 1s, fade-in 1s;
+}
+#landCont img {
+	width: 25vh;
+	border-radius: 4vh;
+}
+#land label {
+	cursor: pointer;
+	font-size: var(--small);
+	display: block;
+	margin-top: 15vh;
+	opacity: .5;
+	transition: .4s;
+}
+#landBtn:checked + #land {
+	top: 0;
+}
+#stickyWrap::before {
+	content: '';
+	position: sticky;
+	top: 0;
+	left: 0;
+	background: var(--highlight);
+	opacity: .5;
+	display: block;
+	height: .3vh;
+	width: 0;
+	margin-bottom: -.3vh;
+	animation: scroll-pos linear;
+}
+#finalWrap {
+	padding: 10vh;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+}
+.card {
+	height: 80svh;
+	flex: 0 0 50vh;
+}
+.card a {
+	color: var(--text);
+}
+.card a > div {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	font-size: var(--large);
+	overflow: hidden;
+	border: solid var(--bg) 2vh;
+	border-radius: 4vh;
+	box-sizing: border-box;
+	padding: 3vh;
+	box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.1);
+	transition: .4s;
+}
+.carousel {
+	overflow: scroll;
+	scroll-snap-type: y mandatory;
+	width: 100%;
+	height: 100%;
+	transform: scale(1.3);
+}
+.carPic {
+	height: 100%;
+	scroll-snap-align: center;
+}
+.carMark {
+	position: absolute;
+    right: 2vh;
+    bottom: 0;
+}
+.carMark span {
+    display: block;
+	background: var(--highlight);
+    width: 1.5vh;
+    height: 1.5vh;
+    margin: 2vh 0;
+    border-radius: 50%;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .5);
+	transition: .4s;
+	&:hover {
+		transform: scale(1.5);
+	}
+}
+.carMark .on {
+	transform: scale(1.5);
+}
+.cardText {
+	width: fit-content;
+}
+mix-icon, phone-icon, playlist-icon, spotify-icon, tidal-icon, folder-icon {
+	width: 4vh;
+	height: 4vh;
+}
+phone-icon, folder-icon {
+	padding-bottom: 1vh;
+}
+#calendar, .blog {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+#dots {
+	display: grid;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	grid-template-columns: auto auto auto auto auto auto auto;
+	grid-template-rows: auto auto auto auto auto auto;
+}
+#dots span {
+	background-color: var(--text);
+	border-radius: 50%;
+	margin: 30%;
+	aspect-ratio: 1;
+	position: relative;
+	display: block;
+}
+#dots span::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+	border: transparent solid .2vh;
+    border-radius: 50%;
+    box-sizing: border-box;
+	transition: .4s;
+}
+#dots span.no {
+	opacity: 0;
+}
+#dots span.today::before {
+	border: var(--text) solid .2vh;
+	transform: scale(1.5);
+}
+.blog {
+	display: grid;
+	align-content: space-between;
+}
+.blogCont {
+	overflow: auto;
+}
+.blogBtn {
+	margin-top: 5vh;
+	font-size: var(--small);
+}
+.blogBtn::before {
+	content: '';
+	display: block;
+	width: 1.5vh;
+	height: 1.5vh;
+	border-radius: 50%;
+	background: var(--text);
+	box-shadow: 3.5vh 0 0 var(--text), 7vh 0 0 var(--text);
+	margin-bottom: 1vh;
+}
+.audioPlay {
+	aspect-ratio: 1;
+	cursor: pointer;
+}
+.audioCont {
+	width: 10vh;
+    background: rgb(255,255,255,.5);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	position: relative;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+	transition: .4s;
+}
+play-icon, pause-icon {
+	width: 100%;
+	height: 100%;
+	padding: 30%;
+	box-sizing: border-box;
+	opacity: 0;
+	position: absolute;
+	transform: scale(0);
+	transition: .2s;
+}
+play-icon svg{
+	transform: translate(3px, 1px);
+}
+.audioTog {
+	transform: scale(1);
+	opacity: 1;
+}
+@keyframes move {
+	to {transform: translateX(calc(-100% + 100vw));}
+}
+@keyframes scroll-pos {
+	to {width: 105vw;}
+}
+@keyframes land-in {
+	from {
+		transform: translateY(5vh);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+/*touch baseline (free horizontal scroll)*/
+@media (pointer: coarse) {
+	body {
+		overflow: hidden;
+	}
+	#stickyWrap {
+		overflow-y: hidden;
+		overflow-x: scroll;
+	}
+	#stickyWrap::before {
+		animation-timeline: scroll(x);
+	}
+	plus-icon {
+		position: fixed;
+		width: 3.5vh;
+		bottom: 3vh;
+		right: 3vh;
+		color: var(--highlight);
+		opacity: .5;
+		transition: .4s;
+	}
+	nav {
+		position: fixed;
+		width: 100vw;
+		height: 100dvh;
+		top: -100vh;
+		left: 0;
+		background: var(--theme1);
+		box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.2);
+		transition: .4s;
+	}
+	#navCont {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+	#navCont span {
+		display: block;
+		text-align: center;
+		font-size: var(--large);
+		padding: 3vh;
+	}
+	#navCont span a {
+		color: var(--text);
+	}
+	#phoneNav:checked + nav {
+		top: 0;
+	}
+	#phoneNav:checked + nav plus-icon {
+		color: var(--bg);
+		transform: rotate(-225deg);
+	}
+	/*gallery - portrait*/
+	@media (orientation: portrait) {
+		#stickyWrap {
+			scroll-snap-type: x mandatory;
+		}
+		#stickyWrap::before {
+			animation-range: 11%;
+		}
+		#finalWrap {
+			padding: 20vh;
+			height: 100dvh;
+			box-sizing: border-box;
+		}
+		.card {
+			flex: 0 0 85vw;
+			scroll-snap-align: center;
+		}
+		@media (min-aspect-ratio: 3/4) {
+			.card {
+				flex: 0 0 70vw;
+			}
+		}
+	}
+}
+
+/*keyboard and mouse (computers, non-touch, vertical scroll)*/
+@media (pointer: fine) and (hover: hover) {
+	nav {
+		display: none;
+	}
+	.phoneLang {
+		display: none;
+	}
+	#mainWrap {
+		height: 300vh;
+		overflow: visible;
+		view-timeline-name: --main-pin;
+		view-timeline-axis: block;
+	}
+	#stickyWrap {
+		height: 100vh;
+		position: sticky;
+		top: 0;
+		overflow-x: hidden;
+	}
+	#stickyWrap::before {
+		animation-timeline: --main-pin;
+		animation-range: contain 0% contain 100%;
+	}
+	#finalWrap {
+		animation: linear move forwards;
+		animation-timeline: --main-pin;
+		animation-range: contain 0% contain 100%;
+	}
+	.audioCont {
+		opacity: .5;
+	}
+	.card a > div {
+		will-change: transform;
+		&:hover {
+			filter: saturate(1.2);
+			transform: scale(1.01);
+		}
+		&:hover .audioCont {
+			opacity: 1;
+		}
+	}
+	#dots div:hover span::before {
+		border: var(--text) solid .2vh;
+		transform: scale(1.5);
+	}
+	.deskBtn a, lang-icon {
+		color: var(--highlight);
+	}
+	#excla {
+		left: 3vh;
+	}
+	#excla span {
+		opacity: 0;
+		font-size: 0;
+		background: var(--theme2);
+		color: var(--text);
+		position: fixed;
+		bottom: 3vh;
+		transition: .4s;
+	}
+	#excla:hover span {
+		font-size: var(--small);
+		opacity: 1;
+		padding: 2vh;
+		border-radius: 4vh;
+	}
+	excla-icon {
+		opacity: 1;
+		transition: .4s;
+	}
+	#excla:hover excla-icon {
+		opacity: 0;
+	}
+	#insta {
+		right: 3vh;
+		z-index: 2;
+	}
+}
+/*extra shenanigans that work better with other considerations*/
+@media (orientation: portrait) {
+	#landBg {
+		grid-template-columns: repeat(6, 15vh);
+		grid-template-rows: repeat(12, 15vh);
+	}
+}
+@media (orientation: landscape) {
+	#landBg {
+		grid-template-columns: repeat(12, 150px);
+		grid-template-rows: repeat(6, 150px);
+	}
+}
