@@ -87,7 +87,7 @@
 	border-radius: 4vh;
 	box-sizing: border-box;
 	padding: 3vh;
-	box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.1);
+	box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.2);
 	transition: .4s;
 }
 .carousel {
