@@ -1,6 +1,11 @@
+h2 {
+	font-size: var(--large);
+    font-weight: 500;
+    margin: 1vh 0;
+}
 #land {
-	color: var(--highlight);
 	background: var(--bg);
+	background-image: var(--grain);
 	display: flex;
 	top:-100vh;
 	width: 100vw;
@@ -19,7 +24,7 @@
 }
 #landBg img {
 	border-radius: 4vh;
-	border: solid var(--bg) 2vh;
+	border: solid transparent 2vh;
 	width: 100%;
 	box-sizing: border-box;
 	grid-row-start: span 2;
@@ -30,21 +35,23 @@
 }
 #landCont {
 	text-align: center;
+	border-radius: 4vh;
 	font-size: 7vh;
-	padding: 0 2vh;
+	padding: 5vh;
 	z-index: 2;
 	animation: land-in 1s, fade-in 1s;
 }
 #landCont img {
 	width: 25vh;
-	border-radius: 4vh;
+	border-radius: 50%;
+	border: .2vh solid;
+	margin-bottom: 5vh;
 }
 #land label {
 	cursor: pointer;
 	font-size: var(--small);
 	display: block;
-	margin-top: 15vh;
-	opacity: .5;
+	margin-top: 10vh;
 	transition: .4s;
 }
 #landBtn:checked + #land {
@@ -56,48 +63,51 @@
 	top: 0;
 	left: 0;
 	background: var(--highlight);
-	opacity: .5;
 	display: block;
-	height: .3vh;
+	height: .2vh;
 	width: 0;
 	margin-bottom: -.3vh;
 	animation: scroll-pos linear;
 }
 #finalWrap {
 	padding: 10vh;
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(8, 50vh);
+	grid-gap: 4vh;
 	align-items: center;
 	width: fit-content;
 }
 .card {
 	height: 80svh;
-	flex: 0 0 50vh;
+	display: grid;
+	gap: 4vh;
 }
 .card a {
-	color: var(--text);
+	color: var(--highlight);
 }
 .card a > div {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	height: 100%;
 	position: relative;
 	font-size: var(--large);
 	overflow: hidden;
-	border: solid var(--bg) 2vh;
+	border: .2vh solid;
 	border-radius: 4vh;
 	box-sizing: border-box;
 	padding: 3vh;
-	box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.1);
+	box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.1), 0px 2px 4px 0px rgba(0, 0, 0, .5);
 	transition: .4s;
-	background: var(--theme1);
-	background-image: url(data:image/png;base64,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);
+	background: var(--theme);
+	background-image: var(--grain);
 }
 .carousel {
 	overflow: scroll;
 	scroll-snap-type: y mandatory;
 	width: 100%;
 	height: 100%;
-	transform: scale(1.3);
+	transform: scale(1.23);
 }
 .carPic {
 	height: 100%;
@@ -127,6 +137,10 @@
 .cardText {
 	width: fit-content;
 }
+.subCard {
+	font-size: var(--small);
+	padding-left: 5vh;
+}
 mix-icon, phone-icon, playlist-icon, spotify-icon, tidal-icon, folder-icon {
 	width: 4vh;
 	height: 4vh;
@@ -148,7 +162,7 @@ phone-icon, folder-icon {
 	grid-template-rows: auto auto auto auto auto auto;
 }
 #dots span {
-	background-color: var(--text);
+	background-color: var(--highlight);
 	border-radius: 50%;
 	margin: 30%;
 	aspect-ratio: 1;
@@ -166,10 +180,10 @@ phone-icon, folder-icon {
 	transition: .4s;
 }
 #dots span.no {
-	opacity: 0;
+	display: none;
 }
 #dots span.today::before {
-	border: var(--text) solid .2vh;
+	border: var(--highlight) solid .2vh;
 	transform: scale(1.5);
 }
 .blog {
@@ -189,8 +203,8 @@ phone-icon, folder-icon {
 	width: 1.5vh;
 	height: 1.5vh;
 	border-radius: 50%;
-	background: var(--text);
-	box-shadow: 3.5vh 0 0 var(--text), 7vh 0 0 var(--text);
+	background: var(--highlight);
+	box-shadow: 3.5vh 0 0 var(--highlight), 7vh 0 0 var(--highlight);
 	margin-bottom: 1vh;
 }
 .audioPlay {
@@ -200,12 +214,15 @@ phone-icon, folder-icon {
 .audioCont {
 	width: 10vh;
     background: rgb(255,255,255,.5);
+	background-image: var(--grain);
     height: 10vh;
     display: flex;
+	color: var(--theme);
     align-items: center;
     justify-content: center;
 	position: relative;
     border-radius: 50%;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .5);
     backdrop-filter: blur(10px);
 	transition: .4s;
 }
@@ -259,7 +276,6 @@ play-icon svg{
 		bottom: 3vh;
 		right: 3vh;
 		color: var(--highlight);
-		opacity: .5;
 		transition: .4s;
 	}
 	nav {
@@ -268,7 +284,7 @@ play-icon svg{
 		height: 100dvh;
 		top: -100vh;
 		left: 0;
-		background: var(--theme1);
+		background: var(--theme);
 		box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.2);
 		transition: .4s;
 	}
@@ -277,6 +293,7 @@ play-icon svg{
 		align-items: center;
 		justify-content: center;
 		height: 100%;
+		background-image: var(--grain);
 	}
 	#navCont span {
 		display: block;
@@ -285,13 +302,12 @@ play-icon svg{
 		padding: 3vh;
 	}
 	#navCont span a {
-		color: var(--text);
+		color: var(--highlight);
 	}
 	#phoneNav:checked + nav {
 		top: 0;
 	}
 	#phoneNav:checked + nav plus-icon {
-		color: var(--bg);
 		transform: rotate(-225deg);
 	}
 	/*gallery - portrait*/
@@ -303,17 +319,16 @@ play-icon svg{
 			animation-range: 11%;
 		}
 		#finalWrap {
-			padding: 20vh;
 			height: 100dvh;
+			grid-template-columns: repeat(8, 85vw);
 			box-sizing: border-box;
 		}
 		.card {
-			flex: 0 0 85vw;
 			scroll-snap-align: center;
 		}
 		@media (min-aspect-ratio: 3/4) {
-			.card {
-				flex: 0 0 70vw;
+			#finalWrap {
+				grid-template-columns: repeat(8, 70vw);
 			}
 		}
 	}
@@ -348,21 +363,16 @@ play-icon svg{
 		animation-timeline: --main-pin;
 		animation-range: contain 0% contain 100%;
 	}
-	.audioCont {
-		opacity: .5;
-	}
 	.card a > div {
 		will-change: transform;
 		&:hover {
-			filter: saturate(1.2);
+			box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.1), 0px 5px 5px 0px rgba(255, 255, 255, .5);
+			filter: invert(1);
 			transform: scale(1.01);
-		}
-		&:hover .audioCont {
-			opacity: 1;
 		}
 	}
 	#dots div:hover span::before {
-		border: var(--text) solid .2vh;
+		border: var(--highlight) solid .2vh;
 		transform: scale(1.5);
 	}
 	.deskBtn a, lang-icon {
@@ -374,8 +384,8 @@ play-icon svg{
 	#excla span {
 		opacity: 0;
 		font-size: 0;
-		background: var(--theme2);
-		color: var(--text);
+		background: var(--theme);
+		color: var(--highlight);
 		position: fixed;
 		bottom: 3vh;
 		transition: .4s;
@@ -406,6 +416,11 @@ play-icon svg{
 	}
 }
 @media (orientation: landscape) {
+	#landCont {
+		border: .2vh solid;
+		background: var(--bg);
+		filter: url(#shadow);
+	}
 	#landBg {
 		grid-template-columns: repeat(12, 150px);
 		grid-template-rows: repeat(6, 150px);

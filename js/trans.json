@@ -1,14 +1,23 @@
 {
 	"en": {
-		"enter": "enter",
-		"talk": "connect"
+		"enter": "Enter",
+		"contact": "Contact",
+		"works": "Works and Collabs",
+		"read": "Read more",
+		"book": "Book me now"
 	},
 	"es": {
 		"enter": "entrar",
-		"talk": "in spansih"
+		"talk": "in spansih",
+		"works": "Works and Collabs",
+		"read": "leer mas",
+		"book": "hacer un booking"
 	},
 	"fr": {
 		"enter": "entré si vou ple",
-		"talk": "in french"
+		"talk": "in french",
+		"works": "Works and Collabs",
+		"read": "leauraoi maise",
+		"book": "face une librotte"
 	}
 }

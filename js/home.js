@@ -16,7 +16,6 @@ function updateDate(lang) {
     document.getElementById("date").textContent =
         new Date()
             .toLocaleDateString(locale, { month: "long", year: "numeric" })
-            .toLowerCase();
 }
 
 //calendar logic
@@ -78,7 +77,7 @@ function onYouTubeIframeAPIReady() {
 // ==========================
 function initPlayer() {
 	player = new YT.Player('yt-player', {
-		videoId: 'w0pXac9pej8',
+		videoId: 'GrCKcxC-0nI',
 		playerVars: {
 			controls: 0,
 			modestbranding: 1,

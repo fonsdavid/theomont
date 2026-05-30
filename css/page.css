@@ -16,6 +16,9 @@ p, a, li {
 article {
 	margin-bottom: 15vh;
 }
+article p {
+	text-shadow: 0 0 10px rgb(0,0,0,.5);
+}
 article *, #navWrap span {
 	animation: ease-in-out bottom-in;
 	animation-timeline: view();
@@ -55,11 +58,13 @@ article a {
     position: fixed;
     bottom: 0;
     left: 0;
+	opacity: .8;
     z-index: 2;
     pointer-events: none;
 }
 #contNav {
 	background: var(--theme);
+	background-image: var(--grain);
 	box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.2);
 	display: flex;
     z-index: 3;
@@ -82,7 +87,7 @@ article a {
 	width: 1vh;
 	height: 1vh;
 	display: block;
-	border: var(--text) solid .3vh;
+	border: var(--highlight) solid .3vh;
 	border-radius: 50%;
 	margin: 0 6vh;
 	position: relative;
@@ -90,13 +95,13 @@ article a {
 	transition: .4s;
 }
 #navWrap span:hover::before{
-	background: var(--text);
+	background: var(--highlight);
 	border: transparent solid .3vh;
 }
 #navWrap span.active::before {
 	will-change: transform;
 	border: transparent solid .3vh;
-	background: var(--text);
+	background: var(--highlight);
 	transform: scale(1.5);
 }
 @keyframes bottom-in {
@@ -129,6 +134,9 @@ article a {
 		content: '';
 		width: 70vw;
 	}
+	#contNav {
+		border-left: .2vh solid;
+	}
 	.deskBtn a, lang-icon, #lang div {
 		color: black;
 	}
@@ -160,14 +168,12 @@ article a {
 		bottom: 3vh;
 		right: 3vh;
 		color: var(--highlight);
-		opacity: .5;
 		transition: .4s;
 	}
 	#phoneNav:checked + #contNav {
 		top: 0;
 	}
 	#phoneNav:checked + #contNav plus-icon {
-		color: var(--bg);
 		transform: rotate(-225deg);
 	}
 	#cont {
