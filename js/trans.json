@@ -1,23 +1,121 @@
 {
 	"en": {
 		"enter": "Enter",
+		"producer": "Music Producer",
+		"engineer": "Sound Engineer",
+		"bio": "Bio",
+		"bio1": "Born in Ecuador",
+		"bio2": "Lived in Paris",
+		"bio3": "Based in Barcelona",
+		"values": "Values",
+		"value1": "Innovation",
+		"value2": "Community",
+		"value3": "Flexibility",
+		"value4": "Efficiency",
 		"contact": "Contact",
-		"works": "Works and Collabs",
-		"read": "Read more",
-		"book": "Book me now"
+		"works": "Works & Collabs",
+		"read": "Read More",
+		"book": "Book Me Now",
+		"flow": "Workflow & Services",
+		"gear": "Gear\n&\nStudios",
+		"click": "Click here",
+		"blog": "Blog",
+		"gallery": "Gallery",
+        "gallery1": [
+			"Manu Estrach & Magali Datzira recording Direct to Tape on the Revox B77\nWinter 2026",
+			"Preparando el Live set con la banda de Marisol Eichborn\nOtoño 2025",
+			"Patchbay y talkback de producción para Masadi\nInvierno 2026",
+			"Grabación de cuerdas para el EP de Masadi\nPrimavera 2026",
+			"Tramel y el set de percusiones que preparamos para la producción del álbum de Half a John “For How Long Have I Been Snoozing?”\nSummer 2025",
+			"Sesión de grabación con Ola Wagner y Xamaquito\nInvierno 2026"
+        ],
+        "gallery2": [
+			"Live Room para Analogue Album Manu Estrach “Yendo Asi”\nGrabando: 2 Guitarras Españolas 2 Voces 1 Leona 1 contrabajo\nOtoño 2025",
+			"Songwriting sessions con Marisol Eichborn y David para el album de Marisol\nPrimavera 2026",
+			"Decidiendo el orden del álbum de G1G1 en LAC después de terminar las grabaciones\nPrimavera 2026",
+			"Produciendo con Da Fabi para Apache Grosse en GMStudio\nPrimavera 2026",
+			"A veces fuera del estudio, sonido y grabación del concierto de Joao Bosco\nVerano 2025",
+			"Produciendo y arreglando canciones para Lila March con Alan y Xamaquito\nOtoño 2025"
+        ]
 	},
 	"es": {
 		"enter": "entrar",
+		"producer": "Productor Musical",
+		"engineer": "Ingeniero Sonoro??",
+		"bio": "Bio",
+		"bio1": "Born in Ecuador",
+		"bio2": "Lived in Paris",
+		"bio3": "Based in Barcelona",
+		"values": "Values",
+		"value1": "Innovation",
+		"value2": "Community",
+		"value3": "Flexibility",
+		"value4": "Efficiency",
+		"contact": "Contactar",
 		"talk": "in spansih",
 		"works": "Works and Collabs",
 		"read": "leer mas",
-		"book": "hacer un booking"
+		"book": "hacer un booking",
+		"flow": "Workflow & Services",
+		"gear": "Gear\n&\nStudios",
+		"click": "Click here",
+		"blog": "Blog",
+		"gallery": "Gallery",
+        "gallery1": [
+			"Manu Estrach & Magali Datzira grabando Direct to Tape a la Revox B77\nInvierno 2026",
+			"Preparando el Live set con la banda de Marisol Eichborn\nOtoño 2025",
+			"Patchbay y talkback de producción para Masadi\nInvierno 2026",
+			"Grabación de cuerdas para el EP de Masadi\nPrimavera 2026",
+			"Tramel y el set de percusiones que preparamos para la producción del álbum de Half a John “For How Long Have I Been Snoozing?”\nSummer 2025",
+			"Sesión de grabación con Ola Wagner y Xamaquito\nInvierno 2026"
+        ],
+        "gallery2": [
+			"Live Room para Analogue Album Manu Estrach “ Yendo Asi”\nGrabando: 2 Guitarras Españolas 2 Voces 1 Leona 1 contrabajo\nOtoño 2025",
+			"Songwriting sessions con Marisol Eichborn y David para el album de Marisol\nPrimavera 2026",
+			"Decidiendo el orden del álbum de G1G1 en LAC después de terminar las grabaciones\nPrimavera 2026",
+			"Produciendo con Da Fabi para Apache Grosse en GMStudio\nPrimavera 2026",
+			"A veces fuera del estudio, sonido y grabación del concierto de Joao Bosco\nVerano 2025",
+			"Produciendo y arreglando canciones para Lila March con Alan y Xamaquito\nOtoño 2025"
+        ]
 	},
 	"fr": {
 		"enter": "entré si vou ple",
+		"producer": "le pruoduacteur de musique",
+		"engineer": "aigeenaire de soonde",
+		"bio": "Bio",
+		"bio1": "Born in Ecuador",
+		"bio2": "Lived in Paris",
+		"bio3": "Based in Barcelona",
+		"values": "Values",
+		"value1": "Innovation",
+		"value2": "Community",
+		"value3": "Flexibility",
+		"value4": "Efficiency",
+		"contact": "Contacte",
 		"talk": "in french",
 		"works": "Works and Collabs",
 		"read": "leauraoi maise",
-		"book": "face une librotte"
+		"book": "face une librotte",
+		"flow": "Workflow & Services",
+		"gear": "translate & Studios",
+		"click": "Click here",
+		"blog": "Blog",
+		"gallery": "Gallery",
+        "gallery1": [
+			"Manu Estrach & Magali Datzira grabando Direct to Tape a la Revox B77\nInvierno 2026",
+			"Preparando el Live set con la banda de Marisol Eichborn\nOtoño 2025",
+			"Patchbay y talkback de producción para Masadi\nInvierno 2026",
+			"Grabación de cuerdas para el EP de Masadi\nPrimavera 2026",
+			"Tramel y el set de percusiones que preparamos para la producción del álbum de Half a John “For How Long Have I Been Snoozing?”\nSummer 2025",
+			"Sesión de grabación con Ola Wagner y Xamaquito\nInvierno 2026"
+        ],
+        "gallery2": [
+			"Live Room para Analogue Album Manu Estrach “ Yendo Asi”\nGrabando: 2 Guitarras Españolas 2 Voces 1 Leona 1 contrabajo\nOtoño 2025",
+			"Songwriting sessions con Marisol Eichborn y David para el album de Marisol\nPrimavera 2026",
+			"Decidiendo el orden del álbum de G1G1 en LAC después de terminar las grabaciones\nPrimavera 2026",
+			"Produciendo con Da Fabi para Apache Grosse en GMStudio\nPrimavera 2026",
+			"A veces fuera del estudio, sonido y grabación del concierto de Joao Bosco\nVerano 2025",
+			"Produciendo y arreglando canciones para Lila March con Alan y Xamaquito\nOtoño 2025"
+        ]
 	}
 }

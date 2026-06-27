@@ -67,6 +67,31 @@ const trigger = document.querySelector('.audioPlay');
 const playIcon = document.querySelector('play-icon');
 const pauseIcon = document.querySelector('pause-icon');
 
+function getYoutubeId(url) {
+
+	try {
+
+		const parsed = new URL(url);
+
+		// youtube.com/watch?v=
+		if (parsed.searchParams.has('v')) {
+			return parsed.searchParams.get('v');
+		}
+
+		// youtu.be/xxxx
+		if (parsed.hostname.includes('youtu.be')) {
+			return parsed.pathname.slice(1);
+		}
+
+	} catch (err) {
+		console.error('Invalid YouTube URL:', url);
+	}
+
+	return null;
+}
+
+const videoId = getYoutubeId(window.FEATURED_TRACK);
+
 // Required global callback
 function onYouTubeIframeAPIReady() {
 	// we lazy load, so nothing here
@@ -77,7 +102,7 @@ function onYouTubeIframeAPIReady() {
 // ==========================
 function initPlayer() {
 	player = new YT.Player('yt-player', {
-		videoId: 'GrCKcxC-0nI',
+		videoId,
 		playerVars: {
 			controls: 0,
 			modestbranding: 1,
@@ -256,6 +281,10 @@ document.querySelectorAll(".carouselWrap").forEach(wrap => {
 
 	let current = 0;
 	let autoSlide;
+	
+	const gallery = wrap.dataset.gallery;
+
+wrap.dataset.current = 0;
 
 	// --------------------
 	// marker clicks
@@ -289,7 +318,10 @@ document.querySelectorAll(".carouselWrap").forEach(wrap => {
 
 		current = index;
 
-		updateMarkers();
+wrap.dataset.current = current;
+
+updateMarkers();
+updateCaption();
 	}
 
 	// --------------------
@@ -304,6 +336,35 @@ document.querySelectorAll(".carouselWrap").forEach(wrap => {
 
 		markers[current].classList.add("on");
 	}
+	
+	
+	function updateCaption() {
+
+    const lang =
+        document.documentElement.lang || "en";
+
+    const captions =
+        translations[lang]?.[gallery];
+
+    if (!captions) return;
+
+    const captionEl =
+        wrap.closest(".card")
+            ?.querySelector(".carouselCaption");
+
+    if (!captionEl) return;
+
+    captionEl.textContent =
+        captions[current] || "";
+
+    // restart animation
+    captionEl.classList.remove("animate");
+
+    // force reflow
+    void captionEl.offsetWidth;
+
+    captionEl.classList.add("animate");
+}
 
 	// --------------------
 	// detect active slide
@@ -319,7 +380,10 @@ document.querySelectorAll(".carouselWrap").forEach(wrap => {
 		if (index !== current) {
 
 			current = index;
-			updateMarkers();
+
+wrap.dataset.current = current;
+
+updateMarkers();
 
 		}
 	});
@@ -365,6 +429,7 @@ document.querySelectorAll(".carouselWrap").forEach(wrap => {
 	// --------------------
 
 	updateMarkers();
-	startAutoplay();
+updateCaption();
+startAutoplay();
 
 });
