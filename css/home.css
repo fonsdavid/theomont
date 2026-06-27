@@ -18,7 +18,7 @@ h2 {
 	z-index: 1;
 }
 #landBg {
-	opacity: .1;
+	opacity: .2;
 	display: grid;
 	position: absolute;
 }
@@ -98,9 +98,29 @@ h2 {
 	box-sizing: border-box;
 	padding: 3vh;
 	box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.1), 0px 2px 4px 0px rgba(0, 0, 0, .5);
+	filter: url(#shadow);
 	transition: .4s;
-	background: var(--theme);
+	background-color: var(--theme);
 	background-image: var(--grain);
+}
+.card svg {
+	width: 4vh;
+	height: 4vh;
+}
+.card .cardCenter {
+	justify-content: center;
+	flex-direction: column;
+}
+.cardCenter svg {
+	padding-bottom: 1vh;
+	transition: .4s;
+}
+.cardText {
+	width: fit-content;
+}
+.subCard {
+	font-size: var(--small);
+	padding-left: 5vh;
 }
 .carousel {
 	overflow: scroll;
@@ -108,6 +128,10 @@ h2 {
 	width: 100%;
 	height: 100%;
 	transform: scale(1.23);
+}
+.carPic, .bgImg {
+    background-size: cover;
+    background-position: center;
 }
 .carPic {
 	height: 100%;
@@ -134,19 +158,14 @@ h2 {
 .carMark .on {
 	transform: scale(1.5);
 }
-.cardText {
-	width: fit-content;
-}
-.subCard {
+.carouselCaption {
+    white-space: pre-line;
 	font-size: var(--small);
-	padding-left: 5vh;
+	font-style: italic;
+	text-align: center;
 }
-mix-icon, phone-icon, playlist-icon, spotify-icon, tidal-icon, folder-icon {
-	width: 4vh;
-	height: 4vh;
-}
-phone-icon, folder-icon {
-	padding-bottom: 1vh;
+.carouselCaption.animate {
+	animation: caption-fade 10s;
 }
 #calendar, .blog {
 	height: 100%;
@@ -168,6 +187,7 @@ phone-icon, folder-icon {
 	aspect-ratio: 1;
 	position: relative;
 	display: block;
+	transition: .4s;
 }
 #dots span::before {
     content: '';
@@ -206,6 +226,7 @@ phone-icon, folder-icon {
 	background: var(--highlight);
 	box-shadow: 3.5vh 0 0 var(--highlight), 7vh 0 0 var(--highlight);
 	margin-bottom: 1vh;
+	transition: .4s;
 }
 .audioPlay {
 	aspect-ratio: 1;
@@ -243,6 +264,44 @@ play-icon svg{
 	transform: scale(1);
 	opacity: 1;
 }
+.modal {
+	display: none;
+	animation: appear .4s;
+}
+.modal:target {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0,.5);
+    backdrop-filter: blur(10px);
+	display: flex;
+	font-size: var(--large);
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.modal > a {
+	position: fixed;
+    width: 100%;
+    height: 100%;
+	cursor: default;
+}
+.modalGrid {
+	display: grid;
+}
+.modalGrid svg {
+	width: 10vh;
+	height: 10vh;
+	display: block;
+	margin-top: 5vh;
+	transition: .4s;
+}
+@keyframes appear {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
 @keyframes move {
 	to {transform: translateX(calc(-100% + 100vw));}
 }
@@ -256,6 +315,12 @@ play-icon svg{
 	to {
 		transform: translateY(0);
 	}
+}
+@keyframes caption-fade {
+	0% {opacity: 0;}
+	5% {opacity: 1;}
+	95% {opacity: 1;}
+	100% {opacity: 0;}
 }
 
 /*touch baseline (free horizontal scroll)*/
@@ -366,10 +431,24 @@ play-icon svg{
 	.card a > div {
 		will-change: transform;
 		&:hover {
-			box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.1), 0px 5px 5px 0px rgba(255, 255, 255, .5);
-			filter: invert(1);
+			box-shadow: inset 0 -20px 100px 0px rgb(0,0,0,0.1), 0px 5px 5px 0px rgba(0, 0, 0, .5);
+			background-color: #e2cdb1;
+			color: #042424;
 			transform: scale(1.01);
+			& #dots span {
+				filter: invert(1);
+			}
+			& .blogBtn::before {
+				content:'';
+				filter: invert(1);
+			}
 		}
+	}
+	.modalGrid svg:hover {
+		opacity: .5;
+	}
+	.carousel {
+		overflow: hidden;
 	}
 	#dots div:hover span::before {
 		border: var(--highlight) solid .2vh;
@@ -380,28 +459,10 @@ play-icon svg{
 	}
 	#excla {
 		left: 3vh;
-	}
-	#excla span {
-		opacity: 0;
-		font-size: 0;
-		background: var(--theme);
-		color: var(--highlight);
-		position: fixed;
-		bottom: 3vh;
-		transition: .4s;
-	}
-	#excla:hover span {
-		font-size: var(--small);
-		opacity: 1;
-		padding: 2vh;
-		border-radius: 4vh;
-	}
-	excla-icon {
-		opacity: 1;
-		transition: .4s;
-	}
-	#excla:hover excla-icon {
-		opacity: 0;
+		transition: transform 10s;
+		&:hover {
+			transform: rotate(3600deg);
+		}
 	}
 	#insta {
 		right: 3vh;
@@ -414,15 +475,23 @@ play-icon svg{
 		grid-template-columns: repeat(6, 15vh);
 		grid-template-rows: repeat(12, 15vh);
 	}
+	.modalGrid {
+		justify-content: center;
+	}
 }
 @media (orientation: landscape) {
 	#landCont {
 		border: .2vh solid;
 		background: var(--bg);
-		filter: url(#shadow);
+		filter: url(#shadowLand);
 	}
 	#landBg {
-		grid-template-columns: repeat(12, 150px);
-		grid-template-rows: repeat(6, 150px);
+		grid-template-columns: repeat(12, 11.5vw);
+		grid-template-rows: repeat(6, 11.5vw);
+	}
+	.modalGrid {
+		grid-auto-flow: column;
+		justify-content: center;
+		grid-gap: 5vh;
 	}
 }

@@ -1,14 +1,15 @@
 /*Common*/
 h1, h2, h3 {
 	font-weight: 500;
-	color: var(--theme);
+    filter: url(#shadow);
+    text-shadow: 4px 4px 1px var(--theme);
 	margin: 0;
 }
 h2 {
 	margin-bottom: 5vh;
 }
 h3 {
-	font-size: var(--small);
+	font-size: 3vh;
 }
 p, a, li {
 	color: var(--highlight);
@@ -29,8 +30,8 @@ article::after {
 	width: 2vh;
 	height: 2vh;
 	border-radius: 50%;
-	background: var(--theme);
-	box-shadow: 6vh 0 0 var(--theme), 12vh 0 0 var(--theme);
+	background: var(--highlight);
+	box-shadow: 6vh 0 0 var(--highlight), 12vh 0 0 var(--highlight);
 	margin-top: 5vh;
 }
 img {
@@ -58,7 +59,7 @@ article a {
     position: fixed;
     bottom: 0;
     left: 0;
-	opacity: .8;
+	opacity: .5;
     z-index: 2;
     pointer-events: none;
 }
@@ -136,9 +137,6 @@ article a {
 	}
 	#contNav {
 		border-left: .2vh solid;
-	}
-	.deskBtn a, lang-icon, #lang div {
-		color: black;
 	}
 	#back {
 		right: 3vh;
