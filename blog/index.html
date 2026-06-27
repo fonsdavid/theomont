@@ -47,10 +47,27 @@
 				<a href="/#home"><back-icon/></a>
 			</div>
 		</div>
+		<svg xmlns="http://www.w3.org/2000/svg" class="filter">
+		  <defs>
+			<filter id="shadow">
+				<feTurbulence type="turbulence" baseFrequency=".5" numOctaves="1" result="turbulence"></feTurbulence>
+				<feDisplacementMap in2="turbulence" in="SourceGraphic" scale="20" result="grainyShadow"></feDisplacementMap>
+				
+				<feFlood flood-color="var(--highlight)" result="coloredFlood" flood-opacity="0.05"></feFlood><feComposite in="coloredFlood" in2="grainyShadow" operator="in" result="colorCorrected"></feComposite>
+			  
+
+			   <feMerge>
+				 <feMergeNode in="colorCorrected"></feMergeNode>
+				 
+				 <feMergeNode in="SourceGraphic"></feMergeNode>
+			   </feMerge>
+			  
+			</filter>
+		  </defs>
+		</svg>
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 		<script>const BLOG_PATH = "/assets/blog/";</script>
 		<script type="text/javascript" src="/js/base.js"></script>
 		<script type="text/javascript" src="/js/page.js"></script>
-		<script type="text/javascript" src="/js/icons.js"></script>
 	</body>
 </html>
