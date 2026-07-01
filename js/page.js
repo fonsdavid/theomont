@@ -97,18 +97,17 @@ function renderPosts(posts) {
     const article = document.createElement('article');
 
     const slug = title
-      .toLowerCase()
       .replace(/[^\w\s-]/g, '')
       .replace(/\s+/g, '-');
 
     article.id = slug;
 
     const h1 = document.createElement('h1');
-    h1.textContent = title.toLowerCase();
+    h1.textContent = title;
 
     const h2 = document.createElement('h2');
     if (post.date) {
-	  h2.textContent = formatDate(post.date).toLowerCase();
+	  h2.textContent = formatDate(post.date);
 	}
 
     const content = document.createElement('div');
@@ -126,7 +125,7 @@ function renderPosts(posts) {
     const span = document.createElement('span');
     const phoneNav = document.getElementById("phoneNav");
 
-    span.textContent = title.toLowerCase();
+    span.textContent = title;
 
     navWrap.appendChild(span);
 
