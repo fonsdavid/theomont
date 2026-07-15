@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y webp imagemagick
-          npm install -g html-minifier-terser clean-css-cli terser
+          npm install -g html-minifier-terser terser
 
       - name: Convert images to WebP
         run: |
@@ -94,11 +94,6 @@ jobs:
             --case-sensitive \
             --use-short-doctype \
             --output {} {} \;
-
-      - name: Minify CSS
-        run: |
-          find . -name "*.css" \
-            -exec cleancss -O1 -o {} {} \;
 
       - name: Minify JavaScript
         run: |
