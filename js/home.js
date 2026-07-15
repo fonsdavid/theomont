@@ -384,6 +384,7 @@ updateCaption();
 wrap.dataset.current = current;
 
 updateMarkers();
+updateCaption();
 
 		}
 	});
